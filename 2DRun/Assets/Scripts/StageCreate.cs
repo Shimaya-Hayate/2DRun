@@ -11,6 +11,8 @@ public class StageCreate : MonoBehaviour
 
     private bool oneMove = false; //1マス分移動したかの判別
 
+    int random; //乱数
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +35,9 @@ public class StageCreate : MonoBehaviour
         //ブロック生成
         if (oneMove)
         {
+            random = Random.Range(0, 10);
             GameObject cube = (GameObject)Resources.Load("Cube");
-            Instantiate(cube, new Vector3(10f, 1f, 0), Quaternion.identity);
+            Instantiate(cube, new Vector3(10f, random, 0), Quaternion.identity);
             ceilOldX = ceilNewX;
             oneMove = false;
         }

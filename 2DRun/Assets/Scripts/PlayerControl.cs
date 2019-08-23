@@ -68,6 +68,6 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().AddForce(x * speed * 2, y * jampPower * 30, 0);
+        GetComponent<Rigidbody>().AddForce(x * speed * 2, y * jampPower * 40, 0);
     }
 }
