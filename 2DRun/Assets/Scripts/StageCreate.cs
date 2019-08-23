@@ -35,9 +35,10 @@ public class StageCreate : MonoBehaviour
         //ブロック生成
         if (oneMove)
         {
-            random = Random.Range(0, 10);
+            random = Random.Range(0, 20);
             GameObject cube = (GameObject)Resources.Load("Cube");
-            Instantiate(cube, new Vector3(10f, random, 0), Quaternion.identity);
+            Instantiate(cube, new Vector3(28f, random, 0), Quaternion.identity);
+            Instantiate(cube, new Vector3(28f, 20, 0), Quaternion.identity); //天井生成
             ceilOldX = ceilNewX;
             oneMove = false;
         }

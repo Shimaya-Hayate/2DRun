@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public float maxSpeed = 10;      //最高速度
+    //ジャンプ処理用
     public float maxJampPower = 10;  //最高ジャンプ力
-
-    float speed;       //速度調節
     float jampPower;   //ジャンプ力調節
-
-    float x; //矢印の右が+1、左が-1
-    float y; //スペースキーon(+1)、off(-1)
-
-    float currentSpeed = 0;  //現在の速度
+    float y; //スペースキーon(+1)、off(0)
     float currentDropSpeed = 0;  //現在の落下速度
 
+    //Player移動用
+    float playerDefaultPositionX; //Playerの初期X座標
+    int ceilPlayDefaPosiX; //切り上げ後
+
+    float playerPositionX; //PlayerのX座標
+    int ceilPlayPosiX; //切り上げ後
+
+    float x = 0; //正方向に加える力
+    float currentSpeed = 0;  //現在の速度
+   
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>(); //重力取得
+        playerDefaultPositionX = this.transform.position.x; //Playerの初期X座標
+        ceilPlayDefaPosiX = Mathf.CeilToInt(playerDefaultPositionX);  //切り上げてint型に変換
     }
 
     // Update is called once per frame
@@ -27,11 +32,10 @@ public class PlayerControl : MonoBehaviour
     {
         currentSpeed = GetComponent<Rigidbody>().velocity.x; //速度ベクトル（横）
         currentDropSpeed = GetComponent<Rigidbody>().velocity.y; //速度ベクトル（縦）
+        playerPositionX = this.transform.position.x; //Playerのx座標取得
+        ceilPlayPosiX = Mathf.CeilToInt(playerPositionX);  //切り上げてint型に変換
 
-        speed = maxSpeed;
         jampPower = maxJampPower;
-        y = 0;
-
 
         if (Input.GetKeyDown(KeyCode.Space))// スペースキーが押されたら
         {
@@ -42,32 +46,29 @@ public class PlayerControl : MonoBehaviour
             {
                 jampPower = 0;
             }
+            Debug.Log(currentDropSpeed);
         }
 
-
-
-        x = Input.GetAxis("Horizontal"); // 右を正、左を負とする（-1 ～ +1）
-
-        //最高速度を現在の速度が超えたら
-        if ((speed - currentSpeed) <= 0) //正の方向
+        //初期座標より左側なら
+        if(ceilPlayPosiX < ceilPlayDefaPosiX)
         {
-            if (x == 1)
+            x = 1;
+        }
+
+        //現在の速度が正方向なら
+        if (currentSpeed >= 0)
+        {
+            if (ceilPlayPosiX == ceilPlayDefaPosiX) //目標の座標なら
             {
-                x = 0;
+                x = currentSpeed * (-1);
             }
         }
 
-        if ((speed + currentSpeed) <= 0) //負の方向
-        {
-            if (x == -1)
-            {
-                x = 0;
-            }
-        }
     }
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().AddForce(x * speed * 2, y * jampPower * 40, 0);
+        GetComponent<Rigidbody>().AddForce(x * 20, y * jampPower * 40, 0);
+        y = 0;
     }
 }
