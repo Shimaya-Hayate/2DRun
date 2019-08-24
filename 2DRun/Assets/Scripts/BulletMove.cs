@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageMove : MonoBehaviour
+public class BulletMove : MonoBehaviour
 {
-    public int v = 10; //移動速度
-
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +13,6 @@ public class StageMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(v * -0.01f, 0, 0);
+        this.transform.Translate(0, -1f, 0);
     }
 }

@@ -46,7 +46,6 @@ public class PlayerControl : MonoBehaviour
             {
                 jampPower = 0;
             }
-            Debug.Log(currentDropSpeed);
         }
 
         //初期座標より左側なら
