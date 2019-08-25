@@ -48,7 +48,7 @@ public class BulletCreate : MonoBehaviour
         {
             playerPosition = GameObject.Find("Player").transform.position; //Playerの座標取得
            
-            Instantiate(bullet, playerPosition, Quaternion.Euler(0, 0, 90 * angle));
+            Instantiate(bullet, playerPosition + new Vector3(1, 0, 0), Quaternion.Euler(0, 0, 90 * angle));
 
             key = false;
         }

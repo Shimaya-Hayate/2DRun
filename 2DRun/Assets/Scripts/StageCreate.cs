@@ -27,7 +27,7 @@ public class StageCreate : MonoBehaviour
         ceilNewX = Mathf.CeilToInt(newX);
 
         //10マス移動したのか
-        if (ceilOldX - ceilNewX == 10)
+        if (ceilOldX - ceilNewX == 20)
         {
             Create();
         }        
@@ -36,7 +36,7 @@ public class StageCreate : MonoBehaviour
     //ステージ生成
     public void Create()
     {
-        random = Random.Range(0, 2);
+        random = Random.Range(0, 5);
         Instantiate(stage[random], new Vector3(30, 0, 0), Quaternion.identity);
 
         ceilOldX = ceilNewX;      

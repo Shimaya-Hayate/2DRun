@@ -15,4 +15,15 @@ public class BulletMove : MonoBehaviour
     {
         this.transform.Translate(0, -1f, 0);
     }
+
+    //当たり判定に触れた時
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
+
+        if (other.gameObject.tag == "Target") //タグが破壊可(Target)なら
+        {
+            Destroy(other.gameObject);
+        }
+    }
 }

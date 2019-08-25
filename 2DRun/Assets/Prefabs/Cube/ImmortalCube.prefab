@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1217536777774032058}
   - component: {fileID: 6243267438002546865}
   - component: {fileID: 3118532756715889891}
-  - component: {fileID: 6986275953953723903}
   - component: {fileID: 8285321004452139840}
   m_Layer: 0
   m_Name: ImmortalCube
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6986275953953723903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2939537232607122151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24009a3d12167b44386d55e669ac32e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  v: 10
 --- !u!65 &8285321004452139840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -100,7 +86,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2939537232607122151}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a2458729c0f7d4f4aa133a366044d950, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

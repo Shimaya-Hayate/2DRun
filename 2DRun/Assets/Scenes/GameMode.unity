@@ -462,6 +462,9 @@ MonoBehaviour:
   stage:
   - {fileID: 7000890762967209257, guid: 7413cb741f7ef0c4cae0f1c47219e909, type: 3}
   - {fileID: 3371126810264884941, guid: 2ff7d7e827b377944829799b5092eb6b, type: 3}
+  - {fileID: 8395394015920295495, guid: 569d4e286844714448e4dcb75d30f029, type: 3}
+  - {fileID: 2386046427216159199, guid: 181242b7710b9604fb2f714417f6313a, type: 3}
+  - {fileID: 3851373874168595014, guid: 6b600529e8801ea4d888b3c289ba3e43, type: 3}
 --- !u!4 &1255405346
 Transform:
   m_ObjectHideFlags: 0
@@ -521,7 +524,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558752860}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a2458729c0f7d4f4aa133a366044d950, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -599,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c8369223dfc844ebda91516aaa821a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJampPower: 30
+  maxJampPower: 27
 --- !u!143 &1558752867
 CharacterController:
   m_ObjectHideFlags: 0
