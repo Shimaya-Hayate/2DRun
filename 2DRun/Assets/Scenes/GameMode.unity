@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947a472ed10797b479c1905bf57654ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 7059226402797989711, guid: bb2960a6cbb819e4d9f6e7fb0e998d49, type: 3}
 --- !u!1 &855942056
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,6 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb28e104b2f4a84c920b3d0cca100df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage:
+  - {fileID: 7000890762967209257, guid: 7413cb741f7ef0c4cae0f1c47219e909, type: 3}
+  - {fileID: 3371126810264884941, guid: 2ff7d7e827b377944829799b5092eb6b, type: 3}
 --- !u!4 &1255405346
 Transform:
   m_ObjectHideFlags: 0
@@ -508,7 +512,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 48
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1558752862
 BoxCollider:
@@ -577,7 +581,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558752860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -595,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c8369223dfc844ebda91516aaa821a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxJampPower: 10
+  maxJampPower: 30
 --- !u!143 &1558752867
 CharacterController:
   m_ObjectHideFlags: 0
@@ -719,4 +723,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24009a3d12167b44386d55e669ac32e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  v: 10
+  v: 20

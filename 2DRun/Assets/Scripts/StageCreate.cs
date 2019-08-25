@@ -9,7 +9,7 @@ public class StageCreate : MonoBehaviour
     int ceilNewX; //切り上げ後
     int ceilOldX; //切り上げ後
 
-    private bool oneMove = false; //1マス分移動したかの判別
+    public GameObject[] stage;
 
     int random; //乱数
 
@@ -26,25 +26,19 @@ public class StageCreate : MonoBehaviour
         newX = GameObject.Find("Floor").transform.position.x;
         ceilNewX = Mathf.CeilToInt(newX);
 
-        //1マス移動したのか
-        if (ceilOldX - ceilNewX == 1)
+        //10マス移動したのか
+        if (ceilOldX - ceilNewX == 10)
         {
-            oneMove = true;
-        }
+            Create();
+        }        
+    }
 
-        //ブロック生成
-        if (oneMove)
-        {
-            random = Random.Range(0, 20);
-            GameObject cube = (GameObject)Resources.Load("Cube/Cube");
-            Instantiate(cube, new Vector3(30, random, 0), Quaternion.identity);
+    //ステージ生成
+    public void Create()
+    {
+        random = Random.Range(0, 2);
+        Instantiate(stage[random], new Vector3(30, 0, 0), Quaternion.identity);
 
-            //cube = (GameObject)Resources.Load("Cube/ImmortalCube");
-            //Instantiate(cube, new Vector3(30, 20, 0), Quaternion.identity); //天井生成
-
-            ceilOldX = ceilNewX;
-            oneMove = false;
-        }
-        
+        ceilOldX = ceilNewX;      
     }
 }

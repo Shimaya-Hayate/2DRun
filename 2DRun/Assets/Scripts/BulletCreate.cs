@@ -8,6 +8,8 @@ public class BulletCreate : MonoBehaviour
     int angle; //発射する方向設定
     bool key; //矢印キーを押したか
 
+    public GameObject bullet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,8 +47,7 @@ public class BulletCreate : MonoBehaviour
         if (key)
         {
             playerPosition = GameObject.Find("Player").transform.position; //Playerの座標取得
-
-            GameObject bullet = (GameObject)Resources.Load("Bullet");
+           
             Instantiate(bullet, playerPosition, Quaternion.Euler(0, 0, 90 * angle));
 
             key = false;
