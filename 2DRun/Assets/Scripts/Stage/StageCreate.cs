@@ -16,8 +16,9 @@ public class StageCreate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        oldX = (GameObject.Find("Floor").transform.position.x); //Floorのx座標取得
+        oldX = GameObject.Find("Floor").transform.position.x; //Floorのx座標取得
         ceilOldX = Mathf.CeilToInt(oldX);  //切り上げてint型に変換
+        Create();
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class StageCreate : MonoBehaviour
         ceilNewX = Mathf.CeilToInt(newX);
 
         //10マス移動したのか
-        if (ceilOldX - ceilNewX == 20)
+        if (ceilOldX - ceilNewX == 50)
         {
             Create();
         }        

@@ -9,6 +9,11 @@ public class BulletCreate : MonoBehaviour
     bool key; //矢印キーを押したか
 
     public GameObject bullet;
+    public GameObject powerUpBullet;
+    GameObject shotBullet;
+
+    public bool powerUp = false;
+    public bool speedUp = false;
 
     // Start is called before the first frame update
     void Start()
@@ -47,10 +52,27 @@ public class BulletCreate : MonoBehaviour
         if (key)
         {
             playerPosition = GameObject.Find("Player").transform.position; //Playerの座標取得
-           
-            Instantiate(bullet, playerPosition + new Vector3(1, 0, 0), Quaternion.Euler(0, 0, 90 * angle));
 
-            key = false;
+            if(powerUp)
+            {
+                shotBullet = powerUpBullet;
+            }
+            else
+            {
+                shotBullet = bullet;
+            }
+
+            Instantiate(shotBullet, playerPosition, Quaternion.Euler(0, 0, 90 * angle));
+
+            if(speedUp)
+            {
+                key = true;
+            }
+            else
+            {
+                key = false;
+            }
+           
         }
     }
 }

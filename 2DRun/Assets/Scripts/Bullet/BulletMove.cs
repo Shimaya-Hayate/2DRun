@@ -19,11 +19,14 @@ public class BulletMove : MonoBehaviour
     //当たり判定に触れた時
     void OnTriggerEnter(Collider other)
     {
-        Destroy(this.gameObject);
+        if (other.gameObject.tag != "Player")//Player以外なら
+        {
+                Destroy(this.gameObject);//自身を削除
+        }
 
         if (other.gameObject.tag == "Target") //タグが破壊可(Target)なら
         {
-            Destroy(other.gameObject);
+            Destroy(other.gameObject);//Targetを削除
         }
     }
 }

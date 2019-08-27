@@ -23,8 +23,8 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerDefaultPositionX = this.transform.position.x; //Playerの初期X座標
-        ceilPlayDefaPosiX = Mathf.CeilToInt(playerDefaultPositionX);  //切り上げてint型に変換
+        //playerDefaultPositionX = this.transform.position.x; //Playerの初期X座標
+        //ceilPlayDefaPosiX = Mathf.CeilToInt(playerDefaultPositionX);  //切り上げてint型に変換
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         //初期座標より左側なら
-        if(ceilPlayPosiX < ceilPlayDefaPosiX)
+        if(ceilPlayPosiX < 0)
         {
             x = 1;
         }
@@ -57,7 +57,7 @@ public class PlayerControl : MonoBehaviour
         //現在の速度が正方向なら
         if (currentSpeed >= 0)
         {
-            if (ceilPlayPosiX == ceilPlayDefaPosiX) //目標の座標なら
+            if (ceilPlayPosiX == 0) //目標の座標なら
             {
                 x = currentSpeed * (-1);
             }
@@ -67,7 +67,7 @@ public class PlayerControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().AddForce(x * 20, y * jampPower * 50 + (-50), 0);
+        GetComponent<Rigidbody>().AddForce(x * 20, y * jampPower * 50 - 50, 0);//[-50]は重力
         y = 0;
     }
 }
