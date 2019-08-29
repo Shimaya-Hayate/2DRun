@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3371126810264884942}
   - component: {fileID: 3371126810264884943}
+  - component: {fileID: 5817131835389887304}
   m_Layer: 0
   m_Name: Stage1
   m_TagString: Untagged
@@ -137,6 +138,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24009a3d12167b44386d55e669ac32e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5817131835389887304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371126810264884941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27a667014114374482b3e1c73f5e1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &124823689073592655
@@ -1496,11 +1509,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3371126810264884942}
     m_Modifications:
-    - target: {fileID: 7197766189265827583, guid: ae2dfcc1c270f9949b2bbe8cc6812aab,
-        type: 3}
-      propertyPath: m_Name
-      value: InvisiblePlayer
-      objectReference: {fileID: 0}
     - target: {fileID: 7197766189265827579, guid: ae2dfcc1c270f9949b2bbe8cc6812aab,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1555,6 +1563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197766189265827583, guid: ae2dfcc1c270f9949b2bbe8cc6812aab,
+        type: 3}
+      propertyPath: m_Name
+      value: InvisiblePlayer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae2dfcc1c270f9949b2bbe8cc6812aab, type: 3}

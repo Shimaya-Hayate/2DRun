@@ -7,6 +7,7 @@ TagManager:
   - Target
   - Item
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX

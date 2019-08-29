@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Delete : MonoBehaviour
+//子がいなくなったら削除
+public class ParentDestroy : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,11 +14,9 @@ public class Delete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
+        if(this.transform.childCount == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

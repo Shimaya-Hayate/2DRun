@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageMove : MonoBehaviour
 {
-    int v = 15; //移動速度
+    int v = 20; //移動速度
     int stageMoveSpeed = 1;
 
     Collider playerCollider;
