@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyBulletMove : MonoBehaviour
 {
+    GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class EnemyBulletMove : MonoBehaviour
     {
         if (other.gameObject.tag == "Player") //Playerなら
         {
-            Destroy(other.gameObject);//Playerを削除
+            gameManager.GameOver();//ゲームオーバー
         }
 
         if (other.gameObject.tag != "Enemy")//Enemy以外なら
