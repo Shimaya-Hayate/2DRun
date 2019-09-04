@@ -21,7 +21,7 @@ public class DangerZone : MonoBehaviour
     //触れたものを削除
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Wall")//Wall以外なら
+        if (other.gameObject.tag != "Ground")//Wall以外なら
         {
             if(other.gameObject.tag == "Player")//Playerなら
             {

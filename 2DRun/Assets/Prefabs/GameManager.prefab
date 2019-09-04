@@ -57,4 +57,8 @@ MonoBehaviour:
     type: 3}
   fadeCanvasPrefab: {fileID: 8276863848650605782, guid: 50f91658e7ebe8f4bade761b0b469fd7,
     type: 3}
+  localRankingCanvas: {fileID: 7627754182363567730, guid: 249e1c0daa3a28b4bae96ddb8b40c2a4,
+    type: 3}
+  worldRankingCanvas: {fileID: 7259743676001754438, guid: 75022a002b9158043831015b4c4ee64d,
+    type: 3}
   fadeWaitTime: 1
