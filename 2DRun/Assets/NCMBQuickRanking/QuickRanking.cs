@@ -115,7 +115,7 @@ public class QuickRanking : MonoBehaviour
             return;
         }
 
-        int numSkip = currentRank - 5;
+        int numSkip = currentRank - 4;
         if (numSkip < 0) numSkip = 0;
 
         NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject>(rankingClassName);
@@ -259,7 +259,7 @@ public class QuickRanking : MonoBehaviour
                 string score = string.Format("{0, -10}", rankingData.score.ToString());
 
                 //さっき保存したスコアがあった場合は赤に着色する//
-                if (rankingData.rankNum == currentRank)
+                if (rankingData.objectid == currentObjectid)
                 {
                     text += "<color=red>" + rankNum + ": \t" + name + ": \t" + score + "</color> \n";
                 }

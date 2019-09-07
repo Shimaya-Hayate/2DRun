@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HighScoreManager : MonoBehaviour
 {
-    string key = "SCORE";
+    public string key = "SCORE";
     public Text scoreText; // Textオブジェクト
     public int newScore = 0; // スコア変数
     public int highScore;

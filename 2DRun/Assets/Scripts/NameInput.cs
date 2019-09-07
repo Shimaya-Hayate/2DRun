@@ -8,11 +8,13 @@ public class NameInput : MonoBehaviour
 {
     public InputField playerName;
     NameManager nameManager;
+    GameManager gameManager;
     bool rename = false;
 
     void Start ()
     {
         nameManager = GameObject.Find("NameManager").GetComponent<NameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void NameChange()
@@ -27,6 +29,7 @@ public class NameInput : MonoBehaviour
             PlayerPrefs.SetString(nameManager.key, playerName.text); //名前を保存
 
             nameManager.NameLoad(); //名前をロード
+            gameManager.Rename(); //名前変更画面を削除
 
             rename = false;
         }

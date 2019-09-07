@@ -5,27 +5,9 @@ using UnityEngine;
 public class StageMove : MonoBehaviour
 {
     int v = 20; //移動速度
-    int stageMoveSpeed = 1;
 
-    Collider playerCollider;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(playerCollider.isTrigger == true)
-        {
-            stageMoveSpeed = 2;
-        }
-        else
-        {
-            stageMoveSpeed = 1;
-        }
-        this.transform.Translate(v * -0.01f * stageMoveSpeed, 0, 0);
+        this.transform.Translate(v * -0.01f * Time.timeScale, 0, 0);
     }
 }

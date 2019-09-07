@@ -17,19 +17,22 @@ public class CreateEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //上下移動する
-        count++;
-        if (count == 100)
+        if (Time.timeScale != 0f)
         {
-            count = 0;
-            enemySpeed *= -1;
-        }
-        this.transform.Translate(0, enemySpeed * -0.01f, 0);
+            //上下移動する
+            count++;
+            if (count == 100)
+            {
+                count = 0;
+                enemySpeed *= -1;
+            }
+            this.transform.Translate(0, enemySpeed * -0.01f, 0);
 
-        //攻撃する
-        if ((count % 50) == 0)
-        {
-            Instantiate(enemySphere, this.transform.position, Quaternion.identity);
+            //攻撃する
+            if ((count % 50) == 0)
+            {
+                Instantiate(enemySphere, this.transform.position, Quaternion.identity);
+            }
         }
     }
 }

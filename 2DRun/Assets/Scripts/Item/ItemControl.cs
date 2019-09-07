@@ -35,7 +35,7 @@ public class ItemControl : MonoBehaviour
     public void IP()
     {
         Invisible();
-        Invoke("Visible", 2.0f);//2秒後に実行
+        Invoke("Visible", 4.0f);//2秒後に実行
     }
 
     //Playerが透けるようになる
@@ -43,6 +43,7 @@ public class ItemControl : MonoBehaviour
     {
         playerCollider.isTrigger = true;
         playerRigidbody.constraints = RigidbodyConstraints.FreezePosition;//座標固定
+        Time.timeScale = 2;
     }
 
     //Playerの当たり判定がもとに戻る
@@ -50,6 +51,7 @@ public class ItemControl : MonoBehaviour
     {
         playerCollider.isTrigger = false;
         playerRigidbody.constraints = RigidbodyConstraints.FreezePositionZ;//座標固定解除
+        Time.timeScale = 1;
     }
 
     //---------------------------------------------------------------------------------
@@ -60,7 +62,7 @@ public class ItemControl : MonoBehaviour
         random = Random.Range(0, 2);
 
         PowerUp();
-        Invoke("PowerDown", 3.0f);
+        Invoke("PowerDown", 4.0f);
 
     }
 

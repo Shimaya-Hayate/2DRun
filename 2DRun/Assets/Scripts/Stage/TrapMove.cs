@@ -20,15 +20,18 @@ public class TrapMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //上下移動する
-        count++;
-        if (count == 100)
+        if (Time.timeScale != 0f)
         {
-            count = 0;
-            verticalSpeed *= -1;
-            horizonSpeed *= -1;
+            //上下移動する
+            count++;
+            if (count == 100)
+            {
+                count = 0;
+                verticalSpeed *= -1;
+                horizonSpeed *= -1;
+            }
+            this.transform.Translate(horizonSpeed * -0.01f, verticalSpeed * -0.01f, 0);
         }
-        this.transform.Translate(horizonSpeed * -0.01f, verticalSpeed * -0.01f, 0);
     }
 
     //Player触れたら削除

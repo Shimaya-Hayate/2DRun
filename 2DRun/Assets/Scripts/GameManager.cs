@@ -19,9 +19,7 @@ public class GameManager : MonoBehaviour
     public GameObject rankingCanvas;     //ランキング
     public GameObject settingCanvas;     //設定
     public GameObject fadeCanvasPrefab;  //フェード
-    public GameObject localRankingCanvas;//ローカルランキング
-    public GameObject worldRankingCanvas;//ワールドランキング
-    public GameObject renameCanvas;
+    public GameObject renameCanvas;      //名前入力
 
     //生成したクローン用
     GameObject titleCanvasClone;
@@ -29,7 +27,6 @@ public class GameManager : MonoBehaviour
     GameObject rankingCanvasClone;
     GameObject settingCanvasClone;
     GameObject fadeCanvasClone;
-    GameObject localRankingCanvasClone;
     GameObject worldRankingCanvasClone;
     GameObject renameCanvasClone;
 
@@ -39,13 +36,14 @@ public class GameManager : MonoBehaviour
     Button[] button;
 
     bool ranking = true;      //ランキング画面切り替え
-    bool localRanking = true; //world : localの切り替え
     bool setting = true;      //設定画面切り替え
     bool rename = true;       //名前入力画面切り替え
 
     //ゲームモードでコンポーネント取得
+    GameObject player;
     PlayerControl playerControl;
     Rigidbody playerRigidbody;
+    Collider playerCollider;
     StageCreate stageCreate;
     StageMove stageMove;
 
@@ -67,6 +65,8 @@ public class GameManager : MonoBehaviour
     //任意のステージに移動する処理
     public void MoveToStage(int stageNum)
     {
+        Time.timeScale = 1f;
+
         currentStageNum = stageNum;
         //コルーチンを実行
         StartCoroutine(WaitForLoadScene(stageNum));
@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
 
         //フェードインさせる
         fadeCanvas.fadeIn = true;
+
         yield return new WaitForSeconds(fadeWaitTime);
 
         //シーンを非同期で読込し、読み込まれるまで待機する
@@ -92,16 +93,20 @@ public class GameManager : MonoBehaviour
         fadeCanvas.fadeOut = true;
 
         //読み込んだシーンがタイトルなら
-        if(stageNum == 1)
+        if(currentStageNum == 1)
         {
             TitleDisplay();
         }
 
         //読み込んだシーンがゲーム画面なら
-        if(stageNum == 2)
+        if(currentStageNum == 2)
         {
-            playerControl = GameObject.Find("Player").GetComponent<PlayerControl>();
-            playerRigidbody = GameObject.Find("Player").GetComponent<Rigidbody>();
+            //Playerのコンポーネント取得
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerControl = player.GetComponent<PlayerControl>();
+            playerRigidbody = player.GetComponent<Rigidbody>();
+            playerCollider = player.GetComponent<Collider>();
+
             stageCreate = GameObject.Find("StageCreater").GetComponent<StageCreate>();
             stageMove = GameObject.Find("Floor").GetComponent<StageMove>();
         }
@@ -149,11 +154,6 @@ public class GameManager : MonoBehaviour
 
             //ボタンにイベント設定
             button[0].onClick.AddListener(Ranking);
-            button[1].onClick.AddListener(LocalRanking);
-            button[2].onClick.AddListener(WorldRanking);
-
-            localRanking = true;
-            localRankingCanvasClone = Instantiate(localRankingCanvas);//ローカルランキング生成
 
             ranking = false;
         }
@@ -163,8 +163,6 @@ public class GameManager : MonoBehaviour
         {
             //ランキング画面削除
             Destroy(rankingCanvasClone);
-            Destroy(worldRankingCanvasClone);//ワールドランキング削除
-            Destroy(localRankingCanvasClone);//ローカルランキング削除
 
             ranking = true;
         }
@@ -215,19 +213,24 @@ public class GameManager : MonoBehaviour
     void Finish()
     {
         Application.Quit();
-
     }
 
     //ゲームオーバー
     public void GameOver()
     {
-        //キャラ停止
+        //キャラ停止・判定削除
         playerControl.enabled = false;
-        playerRigidbody.isKinematic = true;
+        Destroy(playerRigidbody);
 
         //ステージ生成停止
         stageCreate.enabled = false;
         stageMove.enabled = false;
+
+        Destroy(player.gameObject);
+        GameObject bulletCreater = GameObject.Find("BulletCreater");
+        Destroy(bulletCreater);
+
+        Time.timeScale = 0f;
 
         //ゲームオーバー画面生成
         gameOverCanvasClone = Instantiate(gameOverCanvas);
@@ -236,9 +239,9 @@ public class GameManager : MonoBehaviour
         button = gameOverCanvasClone.GetComponentsInChildren<Button>();
 
         //ボタンにイベント設定
-        button[0].onClick.AddListener(Ranking);
-        button[1].onClick.AddListener(Title);
-        button[2].onClick.AddListener(Retry);
+        button[0].onClick.AddListener(Title);
+        button[1].onClick.AddListener(Retry);
+        //button[2].onClick.AddListener(Ranking);
 
         ScoreSave();
     }
@@ -277,32 +280,6 @@ public class GameManager : MonoBehaviour
         //ハイスコア表示
         Text highScoreText = gameOverCanvasClone.transform.FindChild("HighScore").GetComponent<Text>();
         highScoreText.text = "HighScore : " + highScore;
-        Debug.Log(highScore);
-    }
-
-    //ローカルランキングの表示
-    void LocalRanking()
-    {
-        if(localRanking == false)//ローカルランキングを開いていない
-        {
-
-            Destroy(worldRankingCanvasClone);//ワールドランキング削除
-            localRankingCanvasClone = Instantiate(localRankingCanvas);//ローカルランキング生成
-
-            localRanking = true;
-        }
-    }
-
-    //ワールドランキングの表示
-    void WorldRanking()
-    {
-        if (localRanking == true)//ローカルランキングを開いている
-        {
-            Destroy(localRankingCanvasClone);//ローカルランキング削除
-            worldRankingCanvasClone = Instantiate(worldRankingCanvas);//ワールドランキング生成
-
-            localRanking = false;
-        }
     }
 
     //名前入力画面の表示
