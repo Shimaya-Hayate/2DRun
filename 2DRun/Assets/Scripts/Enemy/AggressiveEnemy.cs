@@ -27,7 +27,7 @@ public class AggressiveEnemy : MonoBehaviour
         this.transform.Translate(0, enemySpeed * -0.01f, 0);
 
         //攻撃する
-        if (count == 50)
+        if (count == 30)
         {
             Instantiate(enemyBullet, this.transform.position, Quaternion.Euler(0, 0, 90));
         }

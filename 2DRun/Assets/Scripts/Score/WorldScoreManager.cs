@@ -21,6 +21,7 @@ public class WorldScoreManager : MonoBehaviour
         
     }
 
+    //ランキングの表示
     void ScoreDisplay()
     {
         message.text = "";

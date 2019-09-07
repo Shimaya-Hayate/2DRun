@@ -12,7 +12,7 @@ public class StageMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCollider = GameObject.Find("Player").GetComponent<Collider>();
+        playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>();
     }
 
     // Update is called once per frame

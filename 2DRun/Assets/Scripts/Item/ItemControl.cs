@@ -17,7 +17,7 @@ public class ItemControl : MonoBehaviour
     void Start()
     {
         //Playerの情報をそれぞれ代入
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         playerCollider = player.GetComponent<Collider>();
         playerRigidbody = player.GetComponent<Rigidbody>();
 
@@ -35,7 +35,7 @@ public class ItemControl : MonoBehaviour
     public void IP()
     {
         Invisible();
-        Invoke("Visible", 2.5f);//2.5秒後に実行
+        Invoke("Visible", 2.0f);//2秒後に実行
     }
 
     //Playerが透けるようになる
@@ -60,7 +60,7 @@ public class ItemControl : MonoBehaviour
         random = Random.Range(0, 2);
 
         PowerUp();
-        Invoke("PowerDown", 2.5f);
+        Invoke("PowerDown", 3.0f);
 
     }
 

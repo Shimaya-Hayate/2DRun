@@ -51,7 +51,7 @@ public class BulletCreate : MonoBehaviour
 
         if (key)
         {
-            playerPosition = GameObject.Find("Player").transform.position; //Playerの座標取得
+            playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position; //Playerの座標取得
 
             if(powerUp)
             {

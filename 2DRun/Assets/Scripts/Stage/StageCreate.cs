@@ -27,8 +27,8 @@ public class StageCreate : MonoBehaviour
         newX = GameObject.Find("Floor").transform.position.x;
         ceilNewX = Mathf.CeilToInt(newX);
 
-        //10マス移動したのか
-        if (ceilOldX - ceilNewX == 50)
+        //100マス移動したのか
+        if (ceilOldX - ceilNewX == 100)
         {
             Create();
         }        

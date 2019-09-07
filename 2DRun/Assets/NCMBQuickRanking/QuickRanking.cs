@@ -21,8 +21,11 @@ public class QuickRanking : MonoBehaviour
 
     public int currentRank = 0;
 
+    //Startより早く呼ばれる
     public void Awake()
     {
+        FetchTopRanking();
+
         if (Instance != null)
         {
             Destroy(this.gameObject);

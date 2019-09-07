@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7985137706169819026}
   - component: {fileID: 2530632388917044851}
   - component: {fileID: 2235398688497557502}
-  - component: {fileID: 7290564591165840699}
+  - component: {fileID: 355553534489335475}
   - component: {fileID: 760878670389843062}
   m_Layer: 0
   m_Name: DangerCube
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7290564591165840699
+--- !u!114 &355553534489335475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3554737482919703101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513d625587f15154c80278669648f31a, type: 3}
+  m_Script: {fileID: 11500000, guid: 47033fca45950f54a8f976f7f29f9010, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &760878670389843062
